@@ -10,6 +10,14 @@ Einbinden benötigter Bibliotheken
 ```{r}
 library(readr)
 library(dplyr)
+library(skimr)
+
+# Es wird überprüft ob "devtools" installiert ist; devtools ist ein Package, um Package von GitHub zu installieren
+if (!require(devtools)) install.packages("devtools")
+# Es wird überprüft, ob das Package DataExplorer bereits installiert ist, ansonsten wird es von GitHub installiert
+if (!require(DataExplorer)) devtools::install_github("boxuancui/DataExplorer")
+
+library(DataExplorer)
 
 ```
 
@@ -85,6 +93,20 @@ str_trim("   Vorname   ")
 ```{r}
 #### Beispiel 5 für die Aufbereitung/Transformation mit stringr #### 
 str_replace("   Vorname   ", "^\\s+ || \\s+$", "")
+
+```
+
+```{r}
+#### Beispiel für die Nutzung von skim
+skim(umsatzdaten)
+
+```
+
+```{r}
+library(DataExplorer)
+
+plot_missing(umsatzdaten)
+plot_histogram(umsatzdaten)
 
 ```
 
